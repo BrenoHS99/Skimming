@@ -19,18 +19,24 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float airMultiplier;
 
+    private bool running = false;
+
+    public GameObject cameraObject;
+    private Camera cameraComp;
+
     private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cameraComp = cameraObject.GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // ground checking
-        onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.15f, ground);
+        onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.03f, ground);
 
         if (onGround)
         {
@@ -46,15 +52,36 @@ public class PlayerController : MonoBehaviour
 
         // limiting velocity
         Vector3 vel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        if(vel.magnitude > speed)
+        if (vel.magnitude > speed)
         {
             Vector3 velLimit = vel.normalized * speed;
             rb.linearVelocity = new Vector3(velLimit.x, rb.linearVelocity.y, velLimit.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && onGround)
+        if (Input.GetKey(KeyCode.Space) && onGround)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 1f * jumpForce, rb.linearVelocity.z); // jumping velocity
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            running = true;
+        }
+        else
+        {
+            running = false;
+        }
+        if (running)
+        {
+            speed = 9f;
+            groundDrag = 2f;
+            cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 110f, 0.2f);
+        }
+        else
+        {
+            speed = 5f;
+            groundDrag = 5f;
+            cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 90f, 0.1f);
         }
     }
 
