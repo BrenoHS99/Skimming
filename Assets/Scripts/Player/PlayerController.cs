@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public float walkSpeed;
+    public float runSpeed;
     public float speed;
     public Transform orientation;
 
@@ -13,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public float playerHeight;
     public LayerMask ground;
-    private bool onGround;
+    public bool onGround;
     public float groundDrag;
 
     public float jumpForce;
@@ -25,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private Camera cameraComp;
 
     private Rigidbody rb;
+
+    public bool limitSpeed = true;
+    public bool dashing = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +46,8 @@ public class PlayerController : MonoBehaviour
         if (onGround)
         {
             rb.linearDamping = groundDrag;
+            limitSpeed = true;
+            dashing = false;
         }
         else
         {
@@ -51,8 +58,12 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical"); // ws ^v movement
 
         // limiting velocity
+        if (dashing)
+        {
+            limitSpeed = false;
+        }
         Vector3 vel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        if (vel.magnitude > speed)
+        if (vel.magnitude > speed && limitSpeed)
         {
             Vector3 velLimit = vel.normalized * speed;
             rb.linearVelocity = new Vector3(velLimit.x, rb.linearVelocity.y, velLimit.z);
@@ -63,7 +74,7 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 1f * jumpForce, rb.linearVelocity.z); // jumping velocity
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !dashing) // left shift to run
         {
             running = true;
         }
@@ -71,30 +82,38 @@ public class PlayerController : MonoBehaviour
         {
             running = false;
         }
-        if (running)
+        if (running) // running condition
         {
-            speed = 9f;
+            speed = runSpeed;
             groundDrag = 2f;
             cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 110f, 0.2f);
         }
         else
         {
-            speed = 5f;
+            speed = walkSpeed;
             groundDrag = 5f;
             cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 90f, 0.1f);
         }
     }
 
+    public void BreakSpeedLimit() // function that breaks the speed limit
+    {
+        limitSpeed = false;
+    }
+
     private void FixedUpdate()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        if (onGround)
+        if (!dashing)
         {
-            rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force); // vel on ground
-        }
-        else
-        {
-            rb.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force); // vel on air
+            if (onGround)
+            {
+                rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force); // vel on ground
+            }
+            else
+            {
+                rb.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force); // vel on air
+            }
         }
     }
 }
