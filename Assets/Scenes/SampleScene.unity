@@ -1033,6 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDash
   plrOrientation: {fileID: 330585546}
+  cameraObject: {fileID: 330585543}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

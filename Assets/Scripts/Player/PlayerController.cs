@@ -86,13 +86,19 @@ public class PlayerController : MonoBehaviour
         {
             speed = runSpeed;
             groundDrag = 2f;
-            cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 110f, 0.2f);
+            if (!dashing)
+            {
+                cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 110f, 0.2f);
+            }
         }
         else
         {
             speed = walkSpeed;
             groundDrag = 5f;
-            cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 90f, 0.1f);
+            if (!dashing)
+            {
+                cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 90f, 0.1f);
+            }
         }
     }
 
