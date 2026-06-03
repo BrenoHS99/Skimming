@@ -30,11 +30,20 @@ public class PlayerController : MonoBehaviour
 
     public bool limitSpeed = true;
     public bool dashing = false;
+
+    public GameObject checkpoint;
+    public float currentCheckpointSequence;
+
+    private GameObject voidStart;
+
+    private Vector3 startPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         cameraComp = cameraObject.GetComponent<Camera>();
+        startPos = transform.position;
+        voidStart = GameObject.FindGameObjectWithTag("Void");
     }
 
     // Update is called once per frame
@@ -69,6 +78,11 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector3(velLimit.x, rb.linearVelocity.y, velLimit.z);
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Defeat();
+        }
+
         if (Input.GetKey(KeyCode.Space) && onGround)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 1f * jumpForce, rb.linearVelocity.z); // jumping velocity
@@ -100,6 +114,11 @@ public class PlayerController : MonoBehaviour
                 cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 90f, 0.1f);
             }
         }
+
+        if (transform.position.y < voidStart.transform.position.y)
+        {
+            Defeat();
+        }
     }
 
     public void BreakSpeedLimit() // function that breaks the speed limit
@@ -119,6 +138,37 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rb.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force); // vel on air
+            }
+        }
+    }
+
+    public void Defeat()
+    {
+        if (checkpoint != null)
+        {
+            transform.position = checkpoint.transform.position;
+            rb.linearVelocity = Vector3.zero;
+        }
+        else
+        {
+            transform.position = startPos;
+            rb.linearVelocity = Vector3.zero;
+        }
+    }
+
+    public void SetCheckpoint(GameObject checkpointObj, float checkpointSequence)
+    {
+        checkpoint = checkpointObj;
+        currentCheckpointSequence = checkpointSequence;
+
+        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        foreach (GameObject checkpointInstance in checkpoints)
+        {
+            CheckpointScript checkpointScript = checkpointInstance.GetComponent<CheckpointScript>();
+            if (checkpointScript.checkpointSequence < currentCheckpointSequence)
+            {
+                Renderer checkpointInstanceRender = checkpointInstance.GetComponent<Renderer>();
+                checkpointInstanceRender.material.color = Color.blue;
             }
         }
     }
