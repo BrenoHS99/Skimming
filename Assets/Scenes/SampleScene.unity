@@ -1728,6 +1728,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1024244948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8169760722816721196, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+  m_PrefabInstance: {fileID: 8421801905229506109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1024244956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024244948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42dee8ca5a4c6814aaf0beb65f60490c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gliding
+  startGlidingFall: -0.3
+  fallSpeed: 0.007
 --- !u!1001 &1026937221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,7 +2555,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8169760722816721196, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1024244956}
   m_SourcePrefab: {fileID: 100100000, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
