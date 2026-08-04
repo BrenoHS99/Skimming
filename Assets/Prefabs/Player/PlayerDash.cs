@@ -6,7 +6,7 @@ public class PlayerDash : MonoBehaviour
     private Rigidbody rb;
     public Transform plrOrientation;
 
-    private bool canDash = true;
+    public bool canDash = true;
 
     public GameObject cameraObject;
     private Camera cameraComp;

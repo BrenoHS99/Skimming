@@ -19,4 +19,22 @@ public class AirCurrentScript : MonoBehaviour
             rb.linearVelocity += (forceDirection) * forceDirectionMultiplier;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Gliding glidingScript = other.gameObject.GetComponent<Gliding>();
+            glidingScript.inAirCurrent = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Gliding glidingScript = other.gameObject.GetComponent<Gliding>();
+            glidingScript.inAirCurrent = false;
+        }
+    }
 }

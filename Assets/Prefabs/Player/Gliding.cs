@@ -11,6 +11,9 @@ public class Gliding : MonoBehaviour
 
     private float glidingFall = -0.3f;
 
+    public bool canGlide = true;
+    public bool inAirCurrent = false;
+
     private void Start()
     {
         plrController = GetComponent<PlayerController>();
@@ -23,7 +26,7 @@ public class Gliding : MonoBehaviour
         {
             glidingFall = startGlidingFall;
         }
-        if (Input.GetKey(KeyCode.Space) && plrController.onGround == false)
+        if (Input.GetKey(KeyCode.Space) && plrController.onGround == false && inAirCurrent == false && canGlide)
         {
             Vector3 glidingVelocity = new Vector3(
                 rb.linearVelocity.x,
