@@ -23,7 +23,7 @@ public class PlayerDash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && canDash) // left ctrl to dash
+        if (Input.GetMouseButtonDown(0) && canDash) // mouse left to dash
         {
             float xzMultiplier = 2f;
             canDash = false;
