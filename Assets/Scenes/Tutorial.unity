@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 238868434}
   - component: {fileID: 238868433}
   - component: {fileID: 238868432}
+  - component: {fileID: 238868435}
   m_Layer: 6
   m_Name: Platform (3)
   m_TagString: Untagged
@@ -231,6 +232,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238868430}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &238868435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238868430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0db53c6954439409e85947a6cebc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeObjTut
+  minDist: 10
+  maxDist: 50
 --- !u!1 &252912414
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +387,7 @@ GameObject:
   - component: {fileID: 1137892571}
   - component: {fileID: 1137892570}
   - component: {fileID: 1137892569}
+  - component: {fileID: 1137892572}
   m_Layer: 6
   m_Name: Platform (2)
   m_TagString: Untagged
@@ -472,6 +488,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137892567}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1137892572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137892567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0db53c6954439409e85947a6cebc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeObjTut
+  minDist: 10
+  maxDist: 50
 --- !u!1 &1156880453
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +641,7 @@ GameObject:
   - component: {fileID: 1227573801}
   - component: {fileID: 1227573800}
   - component: {fileID: 1227573799}
+  - component: {fileID: 1227573802}
   m_Layer: 6
   m_Name: Platform (1)
   m_TagString: Untagged
@@ -711,6 +742,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227573797}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1227573802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227573797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0db53c6954439409e85947a6cebc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeObjTut
+  minDist: 10
+  maxDist: 50
 --- !u!1 &1893205552
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +880,7 @@ GameObject:
   - component: {fileID: 2058375759}
   - component: {fileID: 2058375758}
   - component: {fileID: 2058375757}
+  - component: {fileID: 2058375760}
   m_Layer: 6
   m_Name: Platform (4)
   m_TagString: Untagged
@@ -935,6 +981,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058375755}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2058375760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058375755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0db53c6954439409e85947a6cebc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FadeObjTut
+  minDist: 10
+  maxDist: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
