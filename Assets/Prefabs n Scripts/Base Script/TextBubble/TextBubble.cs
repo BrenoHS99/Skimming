@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class TextBubble : MonoBehaviour
 {
+	public AudioClip dialogueClip;
+	private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public IEnumerator CreateTextBubble(string mainText, float textDelay)
     {
 		GameObject TextBubbleOBJ = GameObject.Find("TextBubbleGOBJ");
@@ -18,6 +26,7 @@ public class TextBubble : MonoBehaviour
 		foreach (char c in mainText)
         {
             txtMeshBubble.text = txtMeshBubble.text + c;
+            audioSource.PlayOneShot(dialogueClip);
 			yield return new WaitForSeconds(textDelay);
 		}
 		Destroy(TxtBubbleInst, 2f);

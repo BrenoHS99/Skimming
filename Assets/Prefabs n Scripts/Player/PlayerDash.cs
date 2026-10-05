@@ -12,12 +12,18 @@ public class PlayerDash : MonoBehaviour
     private Camera cameraComp;
 
     private PlayerController plrController;
+
+    private AudioSource audioSource;
+    public AudioClip dashSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         plrController = GetComponent<PlayerController>();
         cameraComp = cameraObject.GetComponent<Camera>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +41,11 @@ public class PlayerDash : MonoBehaviour
             dashDirection *= 50f;
             dashDirection = new Vector3(dashDirection.x * xzMultiplier, dashDirection.y, dashDirection.z * xzMultiplier);
             rb.linearVelocity = dashDirection;
+
+            // sound effect
+
+            audioSource.PlayOneShot(dashSound);
+
         }
 
         if (plrController.onGround) // resets the dash condition

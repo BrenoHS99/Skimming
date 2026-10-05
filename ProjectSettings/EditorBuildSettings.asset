@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Tutorial.unity
+    guid: e7346b058063cd64089a55ba66f90381
+  - enabled: 1
+    path: Assets/Scenes/Romanticism.unity
+    guid: 37bf67e9fcf292d4680c158fe8849834
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
