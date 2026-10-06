@@ -29,7 +29,7 @@ public class PlayerDash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && canDash) // mouse left to dash
+        if (Input.GetMouseButtonDown(0) && canDash && plrController.onGround == false) // mouse left to dash
         {
             float xzMultiplier = 2f;
             canDash = false;
@@ -57,7 +57,7 @@ public class PlayerDash : MonoBehaviour
     {
         plrController.dashing = true;
         yield return new WaitForSeconds(0.1f); // X seconds
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.2f, rb.linearVelocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.3f, rb.linearVelocity.z);
         plrController.dashing = false;
         plrController.limitSpeed = true;
     }
