@@ -9000,10 +9000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -9030,7 +9030,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_UseReflectionProbes: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -9157,7 +9157,7 @@ GameObject:
   - component: {fileID: 1351672448}
   - component: {fileID: 1351672447}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11870,11 +11870,9 @@ SceneRoots:
   - {fileID: 1253340550}
   - {fileID: 1752263605}
   - {fileID: 705415129}
-  - {fileID: 262061606}
   - {fileID: 839186282}
   - {fileID: 1487653202}
   - {fileID: 112111022}
-  - {fileID: 1309973486}
   - {fileID: 1221490938}
   - {fileID: 1414440959}
   - {fileID: 231732083}
@@ -11885,3 +11883,5 @@ SceneRoots:
   - {fileID: 1474941362}
   - {fileID: 1710934653}
   - {fileID: 385068045}
+  - {fileID: 262061606}
+  - {fileID: 1309973486}
