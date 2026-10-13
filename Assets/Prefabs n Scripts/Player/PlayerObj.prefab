@@ -287,6 +287,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3556008120293896204}
     - target: {fileID: 6405261658786518099, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6405261658786518099, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 3255704448762707314}

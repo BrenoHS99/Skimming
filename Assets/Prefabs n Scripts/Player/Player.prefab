@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6400a8b887da62a49a65373b22c89d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  walkSpeed: 5
-  runSpeed: 9
+  walkSpeed: 8
+  runSpeed: 14
   speed: 5
   orientation: {fileID: 2103528562084911576}
   playerHeight: 2
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_Bits: 64
   onGround: 0
   groundDrag: 5
-  jumpForce: 5
+  jumpForce: 7
   airMultiplier: 1.2
   cameraObject: {fileID: 0}
   limitSpeed: 1
@@ -252,3 +252,4 @@ MonoBehaviour:
   plrOrientation: {fileID: 0}
   canDash: 1
   cameraObject: {fileID: 0}
+  dashSound: {fileID: 0}
