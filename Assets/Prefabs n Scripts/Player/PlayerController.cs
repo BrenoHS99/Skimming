@@ -50,7 +50,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // ground checking
-        onGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.03f, ground);
+        RaycastHit hit;
+        onGround = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.03f, ground);
+
+        if (onGround && hit.collider.gameObject.GetComponent<MovingPlatforms>())
+        {
+            MovingPlatforms MPlatformHit = hit.collider.gameObject.GetComponent<MovingPlatforms>();
+            if (MPlatformHit.moving == false)
+            {
+                StartCoroutine(MPlatformHit.StartMovement());
+            }
+        }
 
         if (onGround)
         {
