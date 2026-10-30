@@ -273,6 +273,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7978705263256789739}
     m_Modifications:
+    - target: {fileID: 1098524451810548520, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: canTP
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1098524451810548520, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: distance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1098524451810548520, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 3556008120293896204}
+    - target: {fileID: 1098524451810548520, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 5637287655135033881, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
       propertyPath: dashSound
       value: 
@@ -384,6 +400,7 @@ MonoBehaviour:
   fallSpeed: 0.007
   canGlide: 1
   inAirCurrent: 0
+  gliding: 0
 --- !u!82 &734827415099589682
 AudioSource:
   m_ObjectHideFlags: 0
