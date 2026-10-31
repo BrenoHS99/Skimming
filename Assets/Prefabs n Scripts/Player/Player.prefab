@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 6405261658786518099}
   - component: {fileID: 1763653545633737311}
   - component: {fileID: 5637287655135033881}
-  - component: {fileID: 3731978591865270757}
   - component: {fileID: 1098524451810548520}
   m_Layer: 0
   m_Name: Player
@@ -212,6 +211,7 @@ MonoBehaviour:
   dashing: 0
   checkpoint: {fileID: 0}
   currentCheckpointSequence: 0
+  dianaHands: {fileID: 0}
 --- !u!54 &1763653545633737311
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -255,18 +255,6 @@ MonoBehaviour:
   canDash: 1
   cameraObject: {fileID: 0}
   dashSound: {fileID: 0}
---- !u!114 &3731978591865270757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169760722816721196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7dc07a0bebca6846bddd8047fb25b17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
 --- !u!114 &1098524451810548520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,3 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab64b84ca7513da46acb2a21b888bf69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTP
+  TPenabled: 0
+  canTP: 0
+  playerCam: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  distance: 0

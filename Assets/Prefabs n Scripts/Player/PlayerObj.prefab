@@ -294,6 +294,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: d179a4d83c42d5542bfc0eff3e157b5e, type: 3}
     - target: {fileID: 5637287655135033881, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: dianaHands
+      value: 
+      objectReference: {fileID: 1700695644868652434}
+    - target: {fileID: 5637287655135033881, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 3255704448762707314}
@@ -305,6 +309,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6405261658786518099, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
+      propertyPath: dianaHands
+      value: 
+      objectReference: {fileID: 1700695644868652434}
     - target: {fileID: 6405261658786518099, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
       propertyPath: cameraObject
       value: 
@@ -401,6 +409,7 @@ MonoBehaviour:
   canGlide: 1
   inAirCurrent: 0
   gliding: 0
+  dianaHands: {fileID: 1700695644868652434}
 --- !u!82 &734827415099589682
 AudioSource:
   m_ObjectHideFlags: 0
@@ -571,6 +580,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d71d186927a6a241a8c12aa34f71e56, type: 3}
+--- !u!1 &1700695644868652434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8235972709646463887, guid: 3d71d186927a6a241a8c12aa34f71e56, type: 3}
+  m_PrefabInstance: {fileID: 7338079197509377565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2076657512316368680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8721182365163563317, guid: 3d71d186927a6a241a8c12aa34f71e56, type: 3}

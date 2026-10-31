@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float playerHeight;
     public LayerMask ground;
     public bool onGround;
+    public bool onGroundForGliding;
     public float groundDrag;
 
     public float jumpForce;
@@ -37,21 +38,26 @@ public class PlayerController : MonoBehaviour
     private GameObject voidStart;
 
     private Vector3 startPos;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public GameObject dianaHands;
+    private Animator handsAnimator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         cameraComp = cameraObject.GetComponent<Camera>();
         startPos = transform.position;
         voidStart = GameObject.FindGameObjectWithTag("Void");
+
+        handsAnimator = dianaHands.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // ground checking
         RaycastHit hit;
         onGround = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.03f, ground);
+        onGroundForGliding = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 1f, ground);
 
         if (onGround && hit.collider.gameObject.GetComponent<MovingPlatforms>())
         {
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && onGround)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 1f * jumpForce, rb.linearVelocity.z); // jumping velocity
+            handsAnimator.SetTrigger("jump");
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && !dashing) // left shift to run
@@ -129,6 +136,9 @@ public class PlayerController : MonoBehaviour
         {
             Defeat();
         }
+
+        handsAnimator.SetBool("running", running);
+        handsAnimator.SetBool("onGround", onGround);
     }
 
     public void BreakSpeedLimit() // function that breaks the speed limit
@@ -149,6 +159,14 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force); // vel on air
             }
+            if(moveDirection.x != 0 || moveDirection.z != 0)
+            {
+                handsAnimator.SetBool("walking", true);
+            }
+            else
+            {
+                handsAnimator.SetBool("walking", false);
+            }
         }
     }
 
@@ -156,12 +174,12 @@ public class PlayerController : MonoBehaviour
     {
         if (checkpoint != null)
         {
-            transform.position = checkpoint.transform.position;
+            rb.position = checkpoint.transform.position;
             rb.linearVelocity = Vector3.zero;
         }
         else
         {
-            transform.position = startPos;
+            rb.position = startPos;
             rb.linearVelocity = Vector3.zero;
         }
     }

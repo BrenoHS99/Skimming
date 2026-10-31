@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9121094fdf6dcb64790ddcaa630deb3d
+guid: 6b4462e54e88592488b730c1428a0197
 ModelImporter:
   serializedVersion: 24501
   internalIDToNameTable: []
@@ -43,7 +43,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -61,18 +61,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: BackHand.R|Idle (1)
-      takeName: BackHand.R|Idle
+      name: BackHand.R|Dash
+      takeName: BackHand.R|Dash
       internalID: -5367844396357588879
       firstFrame: 0
-      lastFrame: 64
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

@@ -1,38 +1,54 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerTP : MonoBehaviour
 {
+    public bool TPenabled = false;
     public bool canTP = false;
     public Transform playerCam;
     public LayerMask groundLayer;
     public float distance;
 
-    private PlayerDash plrDashScript;
+    private PlayerController plrController;
+    private Rigidbody rb;
 
     void Start()
     {
-        plrDashScript = GetComponent<PlayerDash>();
+        plrController = GetComponent<PlayerController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (canTP && plrDashScript.canDash)
+        if (TPenabled && plrController.onGround == false && canTP)
         {
             RaycastHit hit;
             bool r = Physics.Raycast(playerCam.position, playerCam.forward, out hit, distance, groundLayer);
 
             if(Input.GetMouseButtonDown(1))
             {
-                plrDashScript.canDash = false;
+                canTP = false;
+                StartCoroutine(TPFov());
                 if (r)
                 {
-                    transform.position = hit.point;
+                    rb.position = hit.point;
                 }
                 else
                 {
-                    transform.position += playerCam.forward * distance;
+                    rb.position += playerCam.forward * distance;
                 }
             }
         }
+
+        if (plrController.onGround)
+        {
+            canTP = true;
+        }
+    }
+    IEnumerator TPFov() // the field of view changing when dashing
+    {
+        Camera.main.fieldOfView = 170f;
+        yield return new WaitForSeconds(0.1f);
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 90f, 0.02f);
     }
 }

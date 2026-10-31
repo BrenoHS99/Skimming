@@ -16,7 +16,9 @@ public class PlayerDash : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip dashSound;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject dianaHands;
+    private Animator handsAnimator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -24,9 +26,10 @@ public class PlayerDash : MonoBehaviour
         cameraComp = cameraObject.GetComponent<Camera>();
 
         audioSource = GetComponent<AudioSource>();
+
+        handsAnimator = dianaHands.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && canDash && plrController.onGround == false) // mouse left to dash
@@ -45,7 +48,7 @@ public class PlayerDash : MonoBehaviour
             // sound effect
 
             audioSource.PlayOneShot(dashSound);
-
+            handsAnimator.SetTrigger("dash");
         }
 
         if (plrController.onGround) // resets the dash condition
