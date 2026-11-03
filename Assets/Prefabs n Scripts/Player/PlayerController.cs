@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         // ground checking
         RaycastHit hit;
         onGround = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.03f, ground);
-        onGroundForGliding = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 1f, ground);
+        onGroundForGliding = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 4f, ground);
 
         if (onGround && hit.collider.gameObject.GetComponent<MovingPlatforms>())
         {
@@ -102,10 +102,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && onGround)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 1f * jumpForce, rb.linearVelocity.z); // jumping velocity
-            handsAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && !dashing) // left shift to run
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+			handsAnimator.SetBool("jumping", true);
+		}
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+			handsAnimator.SetBool("jumping", false);
+		}
+
+		if (Input.GetKey(KeyCode.LeftShift) && !dashing) // left shift to run
         {
             running = true;
         }
