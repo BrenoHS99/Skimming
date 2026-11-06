@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,6 +43,11 @@ public class PlayerController : MonoBehaviour
     public GameObject dianaHands;
     private Animator handsAnimator;
 
+    // COYOTE JUMP
+    private bool canCoyote = false;
+    private bool coyoteCD = false;
+    public float coyoteDelay = 0.2f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -56,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         // ground checking
         RaycastHit hit;
-        onGround = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.03f, ground);
+        onGround = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 0.1f, ground);
         onGroundForGliding = Physics.Raycast(transform.position, Vector3.down, out hit, playerHeight * 0.5f + 4f, ground);
 
         if (onGround && hit.collider.gameObject.GetComponent<MovingPlatforms>())
@@ -66,6 +72,16 @@ public class PlayerController : MonoBehaviour
             {
                 StartCoroutine(MPlatformHit.StartMovement());
             }
+        }
+
+        if (!onGround && !coyoteCD) // coyote activate
+        {
+            coyoteCD = true;
+            StartCoroutine(CoyoteDelay());
+        }
+        if (onGround && coyoteCD) // coyote reset
+        {
+            coyoteCD = false;
         }
 
         if (onGround)
@@ -99,8 +115,9 @@ public class PlayerController : MonoBehaviour
             Defeat();
         }
 
-        if (Input.GetKey(KeyCode.Space) && onGround)
+        if (Input.GetKey(KeyCode.Space) && (onGround || canCoyote))
         {
+            canCoyote = false;
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 1f * jumpForce, rb.linearVelocity.z); // jumping velocity
         }
 
@@ -207,5 +224,12 @@ public class PlayerController : MonoBehaviour
                 checkpointInstanceRender.material.color = Color.blue;
             }
         }
+    }
+
+    IEnumerator CoyoteDelay()
+    {
+        canCoyote = true;
+        yield return new WaitForSeconds(coyoteDelay);
+        canCoyote = false;
     }
 }
