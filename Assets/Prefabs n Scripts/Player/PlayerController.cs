@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     private bool coyoteCD = false;
     public float coyoteDelay = 0.2f;
 
+    public GameObject runningParticles;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -124,11 +126,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 			handsAnimator.SetBool("jumping", true);
-		}
+        }
 		if (Input.GetKeyUp(KeyCode.Space))
 		{
 			handsAnimator.SetBool("jumping", false);
-		}
+        }
 
 		if (Input.GetKey(KeyCode.LeftShift) && !dashing) // left shift to run
         {
@@ -146,6 +148,8 @@ public class PlayerController : MonoBehaviour
             {
                 cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 110f, 0.2f);
             }
+
+            runningParticles.SetActive(true);
         }
         else
         {
@@ -155,6 +159,7 @@ public class PlayerController : MonoBehaviour
             {
                 cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, 90f, 0.1f);
             }
+            runningParticles.SetActive(false);
         }
 
         if (transform.position.y < voidStart.transform.position.y)

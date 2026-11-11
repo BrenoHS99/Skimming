@@ -6759,6 +6759,10 @@ PrefabInstance:
       propertyPath: canGlide
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5119615102877401970, guid: d507a2aa1a76e614bbbe7af32d53a33f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7978705263256789739, guid: d507a2aa1a76e614bbbe7af32d53a33f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62.150005
@@ -6797,6 +6801,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7978705263256789739, guid: d507a2aa1a76e614bbbe7af32d53a33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746178381170263545, guid: d507a2aa1a76e614bbbe7af32d53a33f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
