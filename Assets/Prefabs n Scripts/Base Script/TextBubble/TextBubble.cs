@@ -29,6 +29,7 @@ public class TextBubble : MonoBehaviour
             audioSource.PlayOneShot(dialogueClip);
 			yield return new WaitForSeconds(textDelay);
 		}
+
 		Destroy(TxtBubbleInst, 2f);
     }
 }

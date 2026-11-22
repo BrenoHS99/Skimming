@@ -17,33 +17,55 @@ public class ProximityPromptScript : MonoBehaviour
 
     [Header("Attributes")]
     public bool active;
+    public bool canPress;
+
+    [Header("Connected NPC")]
+    public GameObject npc;
+    private NPCDialogue npcDialogueScript;
 
     private void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
+        npcDialogueScript = npc.GetComponent<NPCDialogue>();
     }
 
     private void Update()
     {
-        switch (ppOrientation)
+        if(Camera.main != null)
         {
-            case ProximityPromptOrientation.LookAtCamera:
-                transform.LookAt(Camera.main.transform.position);
-                break;
-            case ProximityPromptOrientation.TransformForward:
-                transform.forward = Camera.main.transform.forward;
-                break;
+            switch (ppOrientation)
+            {
+                case ProximityPromptOrientation.LookAtCamera:
+                    transform.LookAt(Camera.main.transform.position);
+                    break;
+                case ProximityPromptOrientation.TransformForward:
+                    transform.forward = Camera.main.transform.forward;
+                    break;
+            }
         }
 
-        if((Camera.main.transform.position - transform.position).magnitude <= visibleDistance)
+        if(active && canPress && Input.GetKeyDown(KeyCode.E))
         {
-            renderer.enabled = true;
-            active = true;
+            canPress = false;
+            StartCoroutine(npcDialogueScript.StartDialogue());
+        }
+
+        if(Camera.main != null)
+        {
+            if ((Camera.main.transform.position - transform.position).magnitude <= visibleDistance)
+            {
+                renderer.enabled = true;
+                active = true;
+            }
+            else
+            {
+                renderer.enabled = false;
+                active = false;
+            }
         }
         else
         {
             renderer.enabled = false;
-            active = false;
         }
     }
 }

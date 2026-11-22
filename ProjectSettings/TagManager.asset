@@ -7,6 +7,7 @@ TagManager:
   - Checkpoint
   - Void
   - Canvas
+  - PlayerCam
   layers:
   - Default
   - TransparentFX
