@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5545040474632730378}
   - component: {fileID: 2954397765950951302}
   - component: {fileID: 3996430196161204817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d953969a6c08bf48b11d700dde6e5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatforms
-  speed: 10
+  speed: 1
+  moving: 0
 --- !u!1 &2815090058471332721
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7586896967029111496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FinalPos
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
