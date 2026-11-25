@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
         voidStart = GameObject.FindGameObjectWithTag("Void");
 
         handsAnimator = dianaHands.GetComponent<Animator>();
+
+        Time.timeScale = 1f;
     }
 
     void Update()
@@ -211,6 +213,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.position = startPos;
             rb.linearVelocity = Vector3.zero;
+        }
+
+        GameObject[] MPlats = GameObject.FindGameObjectsWithTag("MPlat");
+        foreach (GameObject mplatInstance in MPlats)
+        {
+            MovingPlatforms mplatScript = mplatInstance.GetComponent<MovingPlatforms>();
+            StartCoroutine(mplatScript.ResetPosition());
         }
     }
 

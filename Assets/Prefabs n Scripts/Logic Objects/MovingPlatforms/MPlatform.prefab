@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3996430196161204817}
   m_Layer: 6
   m_Name: MPlatform
-  m_TagString: Untagged
+  m_TagString: MPlat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
