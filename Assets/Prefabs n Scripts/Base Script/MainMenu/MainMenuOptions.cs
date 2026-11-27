@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuOptions : MonoBehaviour
 {
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     private enum MenuOptions
     {
         start,

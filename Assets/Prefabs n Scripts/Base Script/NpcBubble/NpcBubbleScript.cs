@@ -17,8 +17,10 @@ public class NpcBubbleScript : MonoBehaviour
         GameObject TextBubbleOBJ = transform.Find("TextBubbleGOBJ").gameObject ;
         GameObject canvasObj = GameObject.FindWithTag("Canvas");
 
-        GameObject TxtBubbleInst = Instantiate(TextBubbleOBJ, canvasObj.transform);
-        TxtBubbleInst.transform.localPosition = new Vector3(-249, -303.9f, 0);
+		GameObject TxtBubbleInst = Instantiate(TextBubbleOBJ, canvasObj.transform);
+        TxtBubbleInst.transform.localPosition = new Vector3(-436.7f, -450.8f, 0);
+
+        TxtBubbleInst.transform.SetSiblingIndex(0);
 
         GameObject TextFromBubble = TxtBubbleInst.transform.Find("Text").gameObject;
 
