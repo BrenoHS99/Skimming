@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenuOptions : MonoBehaviour
@@ -43,5 +44,26 @@ public class MainMenuOptions : MonoBehaviour
 		{
             Application.Quit();
 		}
+	}
+
+    public void SelectButton(string name)
+    {
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+
+		GameObject menuButton = canvas.transform.Find(name).gameObject;
+
+        Animator animController = menuButton.GetComponent<Animator>();
+
+        animController.SetBool("selected", true);
+    }
+
+	public void UnselectButton(string name)
+	{
+		GameObject canvas = GameObject.FindWithTag("Canvas");
+		GameObject menuButton = canvas.transform.Find(name).gameObject;
+
+		Animator animController = menuButton.GetComponent<Animator>();
+
+		animController.SetBool("selected", false);
 	}
 }

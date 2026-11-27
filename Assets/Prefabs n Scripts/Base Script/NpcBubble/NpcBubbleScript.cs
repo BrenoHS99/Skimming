@@ -14,7 +14,7 @@ public class NpcBubbleScript : MonoBehaviour
 
     public IEnumerator CreateTextBubble(string name, string mainText, Sprite dialogueSprite, float textDelay, AudioClip dialogueSfx)
     {
-        GameObject TextBubbleOBJ = GameObject.Find("TextBubbleGOBJ");
+        GameObject TextBubbleOBJ = transform.Find("TextBubbleGOBJ").gameObject ;
         GameObject canvasObj = GameObject.FindWithTag("Canvas");
 
         GameObject TxtBubbleInst = Instantiate(TextBubbleOBJ, canvasObj.transform);
