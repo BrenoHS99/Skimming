@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NPCDialogue : MonoBehaviour
@@ -29,7 +30,8 @@ public class NPCDialogue : MonoBehaviour
     {
         none,
         umbrellaUnlock,
-        tpUnlock
+        tpUnlock,
+        desir
     }
 
     public SpecialDialogueFeature dialogueFeature;
@@ -75,6 +77,11 @@ public class NPCDialogue : MonoBehaviour
                     StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
                     yield return new WaitForSeconds(2f);
                 }
+
+                if (dialogueFeature == SpecialDialogueFeature.desir)
+                {
+                    SceneManager.LoadScene(4);
+                }
             }
         }
         else
@@ -99,6 +106,11 @@ public class NPCDialogue : MonoBehaviour
             {
                 StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
                 yield return new WaitForSeconds(2f);
+            }
+
+            if (dialogueFeature == SpecialDialogueFeature.desir)
+            {
+                SceneManager.LoadScene(4);
             }
         }
         proxScript.canPress = true;

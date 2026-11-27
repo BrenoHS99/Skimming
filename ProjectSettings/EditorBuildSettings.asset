@@ -14,5 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 746ce893a9a41554ab43157959036370
+  - enabled: 1
+    path: Assets/Prefabs n Scripts/Cutscenes/IntroCutscene.unity
+    guid: 8dfe50a2d92749c4ea96be2153356049
+  - enabled: 1
+    path: Assets/Prefabs n Scripts/Cutscenes/DesirCutscene.unity
+    guid: 0d20cf09de15f6a44aea66c4155b782d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

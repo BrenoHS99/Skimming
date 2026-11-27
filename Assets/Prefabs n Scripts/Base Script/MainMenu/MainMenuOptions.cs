@@ -43,7 +43,7 @@ public class MainMenuOptions : MonoBehaviour
 
         if (menuButton == MenuOptions.start)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(3);
         }
         if (menuButton == MenuOptions.exit)
 		{
