@@ -15,9 +15,12 @@ public class Gliding : MonoBehaviour
     public bool inAirCurrent = false;
 
     public bool gliding = false;
+    public bool glideEnabled = false;
 
     public GameObject dianaHands;
     private Animator handsAnimator;
+
+    public GameObject umbrella;
 
     private void Start()
     {
@@ -33,12 +36,12 @@ public class Gliding : MonoBehaviour
             glidingFall = startGlidingFall;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && plrController.onGroundForGliding == false && inAirCurrent == false && canGlide)
+        if (Input.GetKeyDown(KeyCode.Space) && plrController.onGroundForGliding == false && inAirCurrent == false && canGlide && glideEnabled)
         {
             handsAnimator.SetTrigger("startedGliding");
         }
 
-        if (Input.GetKey(KeyCode.Space) && plrController.onGroundForGliding == false && inAirCurrent == false && canGlide)
+        if (Input.GetKey(KeyCode.Space) && plrController.onGroundForGliding == false && inAirCurrent == false && canGlide && glideEnabled)
         {
             gliding = true;
             Vector3 glidingVelocity = new Vector3(
@@ -53,6 +56,7 @@ public class Gliding : MonoBehaviour
         {
             gliding = false;
         }
+        umbrella.SetActive(gliding);
         handsAnimator.SetBool("gliding", gliding);
     }
 }

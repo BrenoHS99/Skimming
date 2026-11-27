@@ -12,10 +12,20 @@ public class PlayerTP : MonoBehaviour
     private PlayerController plrController;
     private Rigidbody rb;
 
+    public GameObject TpObj;
+    private ParticleSystem TpParticle;
+
+    private AudioSource audioSource;
+    public AudioClip tpSfx;
+
     void Start()
     {
         plrController = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
+
+        TpParticle = TpObj.GetComponent<ParticleSystem>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,6 +38,10 @@ public class PlayerTP : MonoBehaviour
             if(Input.GetMouseButtonDown(1))
             {
                 canTP = false;
+
+                TpParticle.Play();
+                audioSource.PlayOneShot(tpSfx);
+
                 StartCoroutine(TPFov());
                 if (r)
                 {

@@ -25,6 +25,15 @@ public class NPCDialogue : MonoBehaviour
 
     public GameObject NPCCamera;
 
+    public enum SpecialDialogueFeature
+    {
+        none,
+        umbrellaUnlock,
+        tpUnlock
+    }
+
+    public SpecialDialogueFeature dialogueFeature;
+
     void Start()
     {
         npcBubbleScript = NpcBubbleSystem.GetComponent<NpcBubbleScript>();
@@ -44,7 +53,24 @@ public class NPCDialogue : MonoBehaviour
             if (!alreadyTriggered)
             {
                 alreadyTriggered = true;
-                foreach(string text in dialogueLines)
+
+                switch (dialogueFeature)
+                {
+                    case SpecialDialogueFeature.none:
+                        break;
+                    case SpecialDialogueFeature.umbrellaUnlock:
+                        Gliding glideScript = playerObj.GetComponent<Gliding>();
+                        glideScript.glideEnabled = true;
+                        break;
+                    case SpecialDialogueFeature.tpUnlock:
+                        PlayerTP tpScript = playerObj.GetComponent<PlayerTP>();
+                        tpScript.TPenabled = true;
+                        break;
+                    default:
+                        break;
+                }
+
+                foreach (string text in dialogueLines)
                 {
                     StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
                     yield return new WaitForSeconds(2f);
@@ -53,6 +79,22 @@ public class NPCDialogue : MonoBehaviour
         }
         else
         {
+            switch (dialogueFeature)
+            {
+                case SpecialDialogueFeature.none:
+                    break;
+                case SpecialDialogueFeature.umbrellaUnlock:
+                    Gliding glideScript = playerObj.GetComponent<Gliding>();
+                    glideScript.glideEnabled = true;
+                    break;
+                case SpecialDialogueFeature.tpUnlock:
+                    PlayerTP tpScript = playerObj.GetComponent<PlayerTP>();
+                    tpScript.TPenabled = true;
+                    break;
+                default:
+                    break;
+            }
+
             foreach (string text in dialogueLines)
             {
                 StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));

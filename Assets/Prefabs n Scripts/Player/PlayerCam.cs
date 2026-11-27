@@ -10,14 +10,11 @@ public class PlayerCam : MonoBehaviour
     private float xRotation;
     private float yRotation;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // locks the cursor
         Cursor.visible = false; // makes the cursor invisible
     }
-
-    // Update is called once per frame
     void Update()
     {
         // vvvvv gets the mouse input

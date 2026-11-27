@@ -21,7 +21,9 @@ public class NpcBubbleScript : MonoBehaviour
         TxtBubbleInst.transform.localPosition = new Vector3(-249, -303.9f, 0);
 
         GameObject TextFromBubble = TxtBubbleInst.transform.Find("Text").gameObject;
+
         GameObject NameFromBubble = TxtBubbleInst.transform.Find("Name").gameObject;
+
         GameObject SpriteFromBubble = TxtBubbleInst.transform.Find("Sprite").gameObject;
 
         TextMeshProUGUI txtMeshBubble = TextFromBubble.GetComponent<TextMeshProUGUI>();
