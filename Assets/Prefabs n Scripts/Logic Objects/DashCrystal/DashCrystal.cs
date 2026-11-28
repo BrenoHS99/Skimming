@@ -10,9 +10,13 @@ public class DashCrystal : MonoBehaviour
 
     public bool canActivate = true;
 
+    private AudioSource audioSource;
+    public AudioClip crystalAudio;
+
     private void Start()
     {
         render = GetComponent<MeshRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +28,7 @@ public class DashCrystal : MonoBehaviour
             {
                 canActivate = false;
                 dashScript.canDash = true;
+                audioSource.PlayOneShot(crystalAudio);
                 render.material = dashCrystalOffMaterial;
                 StartCoroutine(Cooldown());
             }

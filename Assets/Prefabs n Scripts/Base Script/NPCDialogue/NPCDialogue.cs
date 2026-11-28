@@ -31,7 +31,9 @@ public class NPCDialogue : MonoBehaviour
         none,
         umbrellaUnlock,
         tpUnlock,
-        desir
+        desir,
+        fantasyEnd,
+        ruido
     }
 
     public SpecialDialogueFeature dialogueFeature;
@@ -68,19 +70,30 @@ public class NPCDialogue : MonoBehaviour
                         PlayerTP tpScript = playerObj.GetComponent<PlayerTP>();
                         tpScript.TPenabled = true;
                         break;
+                    case SpecialDialogueFeature.fantasyEnd:
+                        SceneManager.LoadScene(7);
+                        break;
                     default:
                         break;
                 }
 
-                foreach (string text in dialogueLines)
+                if (dialogueFeature != SpecialDialogueFeature.fantasyEnd)
                 {
-                    StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
-                    yield return new WaitForSeconds(2f);
-                }
+                    foreach (string text in dialogueLines)
+                    {
+                        StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
+                        yield return new WaitForSeconds(2f);
+                    }
 
-                if (dialogueFeature == SpecialDialogueFeature.desir)
-                {
-                    SceneManager.LoadScene(4);
+                    if (dialogueFeature == SpecialDialogueFeature.desir)
+                    {
+                        SceneManager.LoadScene(4);
+                    }
+
+                    if(dialogueFeature == SpecialDialogueFeature.ruido)
+                    {
+                        SceneManager.LoadScene(12);
+                    }
                 }
             }
         }
@@ -98,19 +111,25 @@ public class NPCDialogue : MonoBehaviour
                     PlayerTP tpScript = playerObj.GetComponent<PlayerTP>();
                     tpScript.TPenabled = true;
                     break;
+                case SpecialDialogueFeature.fantasyEnd:
+                    SceneManager.LoadScene(7);
+                    break;
                 default:
                     break;
             }
 
-            foreach (string text in dialogueLines)
+            if(dialogueFeature != SpecialDialogueFeature.fantasyEnd)
             {
-                StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
-                yield return new WaitForSeconds(2f);
-            }
+                foreach (string text in dialogueLines)
+                {
+                    StartCoroutine(npcBubbleScript.CreateTextBubble(dialogueName, text, dialogueSprite, textDelay, dialogueSfx));
+                    yield return new WaitForSeconds(2f);
+                }
 
-            if (dialogueFeature == SpecialDialogueFeature.desir)
-            {
-                SceneManager.LoadScene(4);
+                if (dialogueFeature == SpecialDialogueFeature.desir)
+                {
+                    SceneManager.LoadScene(4);
+                }
             }
         }
         proxScript.canPress = true;

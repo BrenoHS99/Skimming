@@ -5138,7 +5138,7 @@ PrefabInstance:
     - target: {fileID: 5637287655135033881, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
       propertyPath: dashSound
       value: 
-      objectReference: {fileID: 8300000, guid: d179a4d83c42d5542bfc0eff3e157b5e, type: 3}
+      objectReference: {fileID: 8300000, guid: 3a70d5e927194cb4aab9d45ad250aeaf, type: 3}
     - target: {fileID: 5637287655135033881, guid: 6188283e5128d0e4a9c74ebbfda07c29, type: 3}
       propertyPath: dianaHands
       value: 
@@ -5275,6 +5275,7 @@ MonoBehaviour:
   canGlide: 0
   inAirCurrent: 0
   gliding: 0
+  glideEnabled: 0
   dianaHands: {fileID: 1700695644868652434}
   umbrella: {fileID: 8305426897499616087}
 --- !u!82 &734827415099589682
