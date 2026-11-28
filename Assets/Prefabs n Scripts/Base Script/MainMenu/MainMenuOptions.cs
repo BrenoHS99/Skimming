@@ -45,6 +45,10 @@ public class MainMenuOptions : MonoBehaviour
         {
             SceneManager.LoadScene(3);
         }
+        if (menuButton == MenuOptions.credits)
+        {
+            SceneManager.LoadScene(13);
+        }
         if (menuButton == MenuOptions.exit)
 		{
             Application.Quit();

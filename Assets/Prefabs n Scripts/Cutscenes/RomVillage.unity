@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6d0d4f318985f43bae658ff9ff0b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndCutscene
-  sceneToLoad: 1
+  sceneToLoad: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
